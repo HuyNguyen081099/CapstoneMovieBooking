@@ -8,7 +8,6 @@ import { useForm } from 'react-hook-form'
 export const AccountInfo = () => {
     const { user } = useAuth()
     const { reset, register } = useForm()
-    console.log('user: ', user)
 
     useEffect(() => {
         reset(user)
@@ -48,7 +47,7 @@ export const AccountInfo = () => {
                 register={register}
             />
             <Input
-                className="[&>label]:text-black [&>input]:bg-transparent [&>input]:border [&>input]:border-black [&>input]:text-black"
+                className="pointer-events-none [&>label]:text-black [&>input]:bg-transparent [&>input]:border [&>input]:border-black [&>input]:text-black"
                 label="Mã loại người dùng"
                 name="maLoaiNguoiDung"
                 register={register}
