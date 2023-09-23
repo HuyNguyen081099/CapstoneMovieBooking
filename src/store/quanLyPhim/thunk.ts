@@ -6,7 +6,7 @@ export const getMovieListThunk = createAsyncThunk(
     'quanLyPhim/getMovieList',
     async (_, { rejectWithValue }) => {
         try {
-            const data = await quanLyPhimServices.getMovieList('?maNhom=GP08')
+            const data = await quanLyPhimServices.getMovieList('?maNhom=GP03',)
             await sleep(1000)
             return data.data.content
         } catch (err) {
