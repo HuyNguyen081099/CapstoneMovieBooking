@@ -41,7 +41,7 @@ export const Header = () => {
                 </h1>
                 <div className="flex items-center gap-[60px]">
                     <nav>
-                        <NavLink to="">LỊCH CHIẾU</NavLink>
+                        <NavLink to={PATH.theater}>LỊCH CHIẾU</NavLink>
                         <NavLink to="/">PHIM</NavLink>
                         <NavLink to={PATH.theater}>RẠP</NavLink>
                         <NavLink to="">TIN TỨC</NavLink>
