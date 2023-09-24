@@ -1,4 +1,5 @@
-import { BookingTemplate } from "components/templates/booking"
+import BookingTemplate from "components/templates/booking/BookingTemplate"
+
 
 
 export const Booking = () => {

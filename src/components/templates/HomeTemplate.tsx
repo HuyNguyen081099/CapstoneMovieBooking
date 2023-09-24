@@ -1,10 +1,9 @@
+import { Button } from 'antd'
 import { Card, Skeleton } from 'components'
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { RootState, useAppDispatch } from 'store'
 import { getMovieListThunk } from 'store/quanLyPhim'
-import { Button } from 'antd'
-
 
 export const HomeTemplate = () => {
     const dispatch = useAppDispatch()
@@ -34,30 +33,7 @@ export const HomeTemplate = () => {
     }
 
     return (
-      <div >
-          <div>
-            <h1  className=" font-600 text-30 pt-10">Phim đang chiếu</h1>
-            <div className="grid grid-cols-4">
-                {movieList?.map((movie) => (
-                    <Card
-                        key={movie.maPhim}
-                        className="!mt-20"
-                        hoverable
-                        style={{ width: 240 }}
-                        cover={<img alt="example" src={movie.hinhAnh} />}
-                    >
-                        <Card.Meta
-                            title={movie.tenPhim}
-                            description={movie.moTa.substring(0, 30)}  
-                        />
-                        <Button className='ml-20 mt-20'>trailer</Button>
-                        <Button className='ml-20'>đặt vé</Button>
-                    </Card>
-                ))}
-            </div>
-        </div>
-            <div>
-            <h1  className="font-600 text-30 pt-20">Phim sắp chiếu</h1>
+        <div>
             <div className="grid grid-cols-4">
                 {movieList?.map((movie) => (
                     <Card
@@ -71,13 +47,11 @@ export const HomeTemplate = () => {
                             title={movie.tenPhim}
                             description={movie.moTa.substring(0, 30)}
                         />
-                        <Button className='ml-20 mt-20'>trailer </Button>
-                        <Button className='ml-20'>đặt vé</Button>
+                        <Button type='primary' className='mt-20'><a href={movie.trailer}>Trailer</a></Button>
+                        <Button type='primary' className='ml-20'><a>Đặt vé</a> </Button>
                     </Card>
                 ))}
             </div>
         </div>
-      </div>
     )
 }
-
