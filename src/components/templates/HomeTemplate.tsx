@@ -18,9 +18,9 @@ export const HomeTemplate = () => {
     if (isFetchingMovieList) {
         return (
             <div className="grid grid-cols-4">
-                {[...Array(12)].map(() => {
+                {[...Array(12)].map((_,index) => {
                     return (
-                        <Card className="!w-[300px] !mt-20">
+                        <Card key={index} className="!w-[300px] !mt-20">
                             <Skeleton.Image className="!w-full !h-[250px]" />
                             <Skeleton.Input className="!w-full mt-16" />
                             <Skeleton.Input className="!w-full mt-16" />
