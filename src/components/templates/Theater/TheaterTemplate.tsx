@@ -46,10 +46,10 @@ export const TheaterTemplate = () => {
                           </div>
                         </div>,
                       key: `${b.maCumRap}`,
-                      children: <div>
+                      children: <div key={b.maCumRap}>
                         {
                           b?.danhSachPhim?.map(c => (
-                            <div className="mb-24">
+                            <div key={c.maPhim} className="mb-24">
                               <div className="flex">
                                 <div className="h-[300px]">
                                   <img style={{ width: 200, paddingRight: 10}} src={c.hinhAnh} alt="" />
@@ -66,7 +66,7 @@ export const TheaterTemplate = () => {
                                   <div className="grid grid-cols-6 gap-[10px]">
                                     {
                                       c?.lstLichChieuTheoPhim?.map(d => (
-                                        <p className="text-lichchieu" onClick={() => {
+                                        <p key={d.maLichChieu} className="text-lichchieu" onClick={() => {
                                           if (!accessToken) {
                                             navigate(PATH.login)
                                             return
