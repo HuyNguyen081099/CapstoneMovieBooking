@@ -31,3 +31,21 @@
 
 16. react-toastify
 
+  // <Radio.Group value={maHeThongRap} onChange={changeMaHeThongRap}>
+        {
+          ThongTinLichChieuHeThongRap?.map(a => (
+            <Radio.Button value={a.maHeThongRap}>
+              <div>
+                <img style={{ width: 60, marginBottom: 15 }} src={`${a.logo}`} alt="" />
+                <p>{`${a.tenHeThongRap}`}</p>
+              </div>
+            </Radio.Button>
+          ))
+        }
+      </Radio.Group>
+      <Tabs
+      tabPosition="left"
+      items={
+        
+      }
+      /> //

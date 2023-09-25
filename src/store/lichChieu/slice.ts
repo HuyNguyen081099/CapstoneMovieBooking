@@ -1,32 +1,23 @@
-import { createSlice } from "@reduxjs/toolkit"
-import { Theater } from "types"
-import { getTheaterListThunk } from "."
+import { createSlice } from "@reduxjs/toolkit";
+import { CumRap, LichChieuTheoPhim, ThongTinLichChieuHeThongRap, danhSachPhimChieu } from "types";
+import { getLichChieuListThunk } from ".";
 
-type quanLyRapInitialState = {
-    theaterList?: Theater[]
-    isFetchingTheaterList?: boolean
+type quanLyLichChieuInitialState = {
+    ThongTinLichChieuHeThongRap?: ThongTinLichChieuHeThongRap<CumRap<danhSachPhimChieu<LichChieuTheoPhim[]>[]>[]>[]
 }
+const initialState:quanLyLichChieuInitialState = {}
 
-const initialState: quanLyRapInitialState = {}
-
-const quanLyRapSlice = createSlice({
-    name: "quanLyRap",
+const quanLyLichChieuSlice = createSlice({
+    name: 'quanLyLichChieu',
     initialState,
-    reducers: {},
-    extraReducers(builder) {
+    reducers: {
+
+    },
+    extraReducers(builder){
         builder
-            .addCase(getTheaterListThunk.pending, (state) => {
-                state.isFetchingTheaterList = true
-            })
-            .addCase(getTheaterListThunk.fulfilled, (state, { payload }) => {
-                console.log('payload', payload)
-                state.isFetchingTheaterList = false
-                state.theaterList = payload
-            })
-            .addCase(getTheaterListThunk.rejected, (state) => {
-                state.isFetchingTheaterList = false
-            })
+        .addCase(getLichChieuListThunk.fulfilled, (state, {payload}) => {
+            state.ThongTinLichChieuHeThongRap = payload
+        })
     }
 })
-
-export const { actions: quanLyRapActions, reducer: quanLyRapReducer } = quanLyRapSlice
+export const { reducer: quanLyLichChieuReducer, actions: quanLyLichChieuActions} = quanLyLichChieuSlice

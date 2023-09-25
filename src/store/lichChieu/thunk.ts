@@ -1,13 +1,13 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { quanLyRapServices } from "services/quanLyRap";
+import { quanLyRapServices } from "services";
 
-export const getTheaterListThunk = createAsyncThunk(
-    'quanLyRap/getTheaterList',
+export const getLichChieuListThunk = createAsyncThunk(
+    'getLichChieuList/lichChieuList',
     async (_, { rejectWithValue }) => {
         try {
-            const data = await quanLyRapServices.getTheaterList()
+            const data = await quanLyRapServices.getLichChieuList('?maNhom=GP08')
             return data.data.content
-        } catch (err){
+        } catch (err) {
             return rejectWithValue(err)
         }
     }

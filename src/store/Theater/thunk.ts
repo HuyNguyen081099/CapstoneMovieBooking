@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { quanLyRapServices } from "services/quanLyRap";
+import { quanLyRapServices } from "services";
 
 export const getTheaterListThunk = createAsyncThunk(
     'quanLyRap/getTheaterList',

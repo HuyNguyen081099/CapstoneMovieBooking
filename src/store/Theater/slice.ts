@@ -19,7 +19,6 @@ const quanLyRapSlice = createSlice({
                 state.isFetchingTheaterList = true
             })
             .addCase(getTheaterListThunk.fulfilled, (state, { payload }) => {
-                console.log('payload', payload)
                 state.isFetchingTheaterList = false
                 state.theaterList = payload
             })
