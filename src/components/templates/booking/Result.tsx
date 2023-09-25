@@ -1,16 +1,15 @@
 import { RootState } from "store"
-
 import { useSelector, useDispatch } from 'react-redux'
 import { baiTapMovieBookingActions } from "store/booking"
-import styled from 'styled-components'
+
 
 
 const Result = () => {
     const dispatch = useDispatch()
     const { chairBookings } = useSelector((state: RootState) => state.baiTapMovieBooking)
-    console.log('chairBookings: ', )
+    console.log('chairBookings: ',)
     return (
-        <Container>
+        <div>
             <h2 className="mt-5">DANH SÁCH GHẾ</h2>
             <div>
                 <div className="d-flex gap-3 mt-3">
@@ -33,6 +32,8 @@ const Result = () => {
                     <tr>
                         <th>Số ghế</th>
                         <th>Giá</th>
+                        <th>Rạp</th>
+                        <th>cụm rạp</th>
                         <th>Hủy</th>
                     </tr>
                 </thead>
@@ -75,46 +76,8 @@ const Result = () => {
             >
                 Thanh toán
             </button>
-        </Container>
+        </div>
     )
 }
 
 export default Result
-
-const Container = styled.div`
-.Chair {
-    width: 40px;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid black;
-    border-radius: 6px;
-
-    &:hover {
-        cursor: pointer;
-        background-color: black;
-        color: white;
-        transition: all 0.3s ease-in-out;
-    }
-
-    &.booking {
-        background-color: red;
-        color: white;
-        border: transparent;
-    }
-
-    &.booked {
-        background-color: grey;
-        color: white;
-        border: transparent;
-        pointer-events: none;
-    }
-
-    &.disabled {
-        border: transparent;
-        pointer-events: none;
-    }
-}
-
-`

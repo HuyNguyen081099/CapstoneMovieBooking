@@ -8,7 +8,7 @@ const BookingTemplate = () => {
     <div className="container">
       <div className="row mt-5">
         <div className="col-8">
-          <div className="p-2 fs-4 bg-dark text-white text-center mb-3">Screen</div>
+          <div className="p-2 fs-4 bg-dark text-white text-center mb-3 ">Screen</div>
           <ChairList data={data} />
         </div>
         <div className="col-4">
