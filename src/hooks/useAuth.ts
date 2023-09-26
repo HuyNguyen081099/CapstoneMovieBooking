@@ -9,3 +9,11 @@ export const useAuth = () => {
         user: userLogin,
     }
 }
+export const useAuthMovie = () => {
+    const { movieList , isFetchingMovieList } = useSelector((state: RootState) => state.quanLyPhim)
+
+    return {
+        isFetchingMovieList,
+        movie: movieList,
+    }
+}

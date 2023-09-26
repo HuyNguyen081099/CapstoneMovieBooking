@@ -63,7 +63,7 @@ export const TheaterTemplate = () => {
                                     </div>
                                     <p className="text-[35px] font-700" >{c.tenPhim}</p>
                                   </div>
-                                  <div className="grid grid-cols-6 gap-[10px]">
+                                  <div className="grid grid-cols-5 gap-[10px]">
                                     {
                                       c?.lstLichChieuTheoPhim?.map(d => (
                                         <p key={d.maLichChieu} className="text-lichchieu" onClick={() => {
