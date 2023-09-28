@@ -14,3 +14,6 @@ export type UserByAccessToken = Omit<UserLogin, 'accessToken'> & {
         maLoaiNguoiDung: 'KhachHang' | 'QuanTri'
     }
 }
+// export type UserUpdate = Omit<UserLogin, 'accessToken' | 'soDT'> & {
+//     soDt: string
+// }

@@ -38,7 +38,7 @@ export const HomeTemplate = () => {
             <form noValidate className="flex my-25 items-end mx-50 ">
                 <input type="search" id="default-search" className="input-search" placeholder="Tìm kiếm phim"
                     required
-                    value={inputValue}
+                    value={inputValue || ""}
                     onChange={(event) => {
                         setInputValue(event.target.value)
                     }}

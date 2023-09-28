@@ -31,6 +31,7 @@ export const getUserByAccessTokenThunk = createAsyncThunk(
             // Nếu user đã đăng nhập => có token
             if (token) {
                 const data = await quanLyNguoiDungServices.getUserByAccessToken()
+                console.log('data', data)
                 return data.data.content
             }
         } catch (err) {
@@ -38,7 +39,6 @@ export const getUserByAccessTokenThunk = createAsyncThunk(
         }
     }
 )
-
 // dispatch(loginThunk(123))
 // Promise
 // pending, fullfiled, rejected

@@ -1,4 +1,4 @@
-import { PayloadAction, createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
 import { UserByAccessToken, UserLogin } from 'types'
 import { getUserByAccessTokenThunk, loginThunk } from '.'
 import { getAccessToken } from 'utils'
@@ -18,8 +18,7 @@ const quanLyNguoiDungSlice = createSlice({
     name: 'quanLyNguoiDung',
     initialState,
     reducers: {
-        logOut: (state, { payload }: PayloadAction<string>) => {
-            console.log('action: ', payload)
+        logOut: (state) => {
             state.accessToken = undefined
             state.userLogin = undefined
             localStorage.removeItem('ACCESSTOKEN')
@@ -36,11 +35,10 @@ const quanLyNguoiDungSlice = createSlice({
                 state.isFetchingLogin = false
             })
             .addCase(loginThunk.fulfilled, (state, { payload }) => {
-                console.log('payload: ', payload)
                 // lưu accessToken xuống localstorage
                 localStorage.setItem('ACCESSTOKEN', payload.accessToken)
                 state.accessToken = payload.accessToken
-
+                
                 // set lại user
                 state.userLogin = payload
                 state.isFetchingLogin = false
