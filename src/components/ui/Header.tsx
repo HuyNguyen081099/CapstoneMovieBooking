@@ -13,7 +13,6 @@ export const Header = () => {
     const { accessToken, user } = useAuth()
     const dispatch = useAppDispatch()
     const [scroll, setSecroll] = useState<boolean>(false)
-    console.log('scroll: ', scroll)
 
     const handleScroll = () => {
         if (window.pageYOffset > 50) {
@@ -42,9 +41,9 @@ export const Header = () => {
                 </h1>
                 <div className="flex items-center gap-[60px]">
                     <nav>
-                        <NavLink to="">LỊCH CHIẾU</NavLink>
-                        <NavLink to="">PHIM</NavLink>
-                        <NavLink to="">RẠP</NavLink>
+                        <NavLink to={PATH.theater}>LỊCH CHIẾU</NavLink>
+                        <NavLink to="/">PHIM</NavLink>
+                        <NavLink to={PATH.booking}>RẠP</NavLink>
                         <NavLink to="">TIN TỨC</NavLink>
                     </nav>
                     <div className="search">
