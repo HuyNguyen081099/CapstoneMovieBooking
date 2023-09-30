@@ -1,3 +1,4 @@
+
 import { Card, Skeleton, Button } from 'components'
 import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
@@ -21,6 +22,7 @@ export const HomeTemplate = () => {
         return (
             <div className="grid grid-cols-4">
                 {[...Array(12)].map((_, index) => {
+
                     return (
                         <Card key={index} className="!w-[300px] !mt-20">
                             <Skeleton.Image className="!w-full !h-[250px]" />

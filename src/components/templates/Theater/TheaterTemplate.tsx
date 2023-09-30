@@ -7,6 +7,7 @@ import { getTheaterListThunk } from "store/Theater"
 import { useAuth } from "hooks"
 import { useNavigate } from "react-router-dom"
 import { PATH } from "constant"
+
 export const TheaterTemplate = () => {
   const { ThongTinLichChieuHeThongRap } = useSelector((state: RootState) => state.quanLyLichChieu)
   const { accessToken } = useAuth()
@@ -67,12 +68,15 @@ export const TheaterTemplate = () => {
                                     {
                                       c?.lstLichChieuTheoPhim?.map(d => (
                                         <p key={d.maLichChieu} className="text-lichchieu" onClick={() => {
+
                                           if (!accessToken) {
                                             navigate(PATH.login)
                                             return
                                           }
-                                          navigate(PATH.booking)
-                                        }}>{d.ngayChieuGioChieu}</p>
+
+                                          navigate(`/booking/${c.tenPhim}/${d.tenRap}/${d.ngayChieuGioChieu}`)
+                                        }}>{d.ngayChieuGioChieu}   {d.giaVe}VNĐ</p>
+
                                       ))
                                     }
                                   </div>
@@ -94,3 +98,4 @@ export const TheaterTemplate = () => {
     </div>
   )
 }
+

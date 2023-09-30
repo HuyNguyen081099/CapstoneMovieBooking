@@ -13,6 +13,7 @@ export const Header = () => {
     const { accessToken, user } = useAuth()
     const dispatch = useAppDispatch()
     const [scroll, setSecroll] = useState<boolean>(false)
+    
     const handleScroll = () => {
         if (window.pageYOffset > 50) {
             setSecroll(true)
