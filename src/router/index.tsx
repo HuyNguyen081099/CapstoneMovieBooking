@@ -1,7 +1,7 @@
 import { RouteObject } from 'react-router-dom'
 import { PATH } from 'constant'
 import { AuthLayout, MainLayout } from 'components'
-import { Login, Register, Home, Account, Booking, DetailMovie} from 'pages'
+import { Login, Register, Home, Account, Booking, DetailMovie, Calendar } from 'pages'
 import { Theater } from 'pages/Theater'
 
 export const router: RouteObject[] = [
@@ -28,6 +28,10 @@ export const router: RouteObject[] = [
             {
                 path: PATH.detail,
                 element: <DetailMovie />
+            },
+            {
+                path: PATH.calendar,
+                element: <Calendar />
             },
         ],
     },

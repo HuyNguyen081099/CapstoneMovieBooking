@@ -1,45 +1,45 @@
 import { RootState } from "store"
 import { useSelector, useDispatch } from 'react-redux'
 import { baiTapMovieBookingActions } from "store/booking"
-// import { getLichChieuListThunk } from "store/lichChieu"
-import { useNavigate } from "react-router-dom"
-// import { useAuth } from "hooks"
-import { useParams } from "react-router-dom"
-// import { toast } from 'react-toastify'
-import { bookingThunk } from 'store/booking'
-// import { handleError } from 'utils'
-//  import { bookingPayload, danhSachVe } from '../../../types/QuanLyDatVe'
-import { AppDispatch } from '../../../store/index'
+import { useNavigate, useParams } from "react-router-dom"
 import { toast } from 'react-toastify'
+import { AppDispatch } from '../../../store/index'
+import { PATH } from 'constant'
+import { useAuth } from "hooks"
 
 const Result = () => {
     const dispatch = useDispatch<AppDispatch>()
-    const navigate = useNavigate()
     const params = useParams()
-    // const { accessToken } = useAuth()
-
+    const navigate = useNavigate()
+    const { accessToken } = useAuth()
     const { chairBookings } = useSelector((state: RootState) => state.baiTapMovieBooking)
     // const { ThongTinLichChieuHeThongRap } = useSelector((state: RootState) => state.quanLyLichChieu)
-    let payload = {};
-    const onPay = (payload) => {
+    let payload = {
+        "danhSachVe": []
+      };
+
+    let history = localStorage.getItem('BOOKINGHISTORY');
+
+    if (chairBookings.length >0) {
         debugger
-        dispatch(bookingThunk(payload))
-            .unwrap()
-            .then(() => {
-                // xử lý action thành công
-                // toast.success('Đăng nhập thành công!')
-                // navigate('/')
-            })
-            .catch((err) => {
-                // xử lý action thất bại
-                // handleError(err)
-                console.log(err)
-                toast.success('Thanh toán thành công !')
-                navigate('/')
-            })
+        if (history) {
+            payload = JSON.parse(history)
+        }
+        const ngayDat = new Date();
+        chairBookings.forEach(c => payload.danhSachVe.push({ tenPhim: params.tenPhim, tenRap: params.tenRap, maGhe: c.soGhe, giaVe: c.gia, ngayDat: ngayDat }))
+    }  
+
+    const onPay = () => {
+        dispatch(baiTapMovieBookingActions.setChairBookeds())
+        if (!accessToken) {
+            navigate(PATH.login)
+
+            return
+        }
+        toast.success('Đặt vé thành công')
+        localStorage.setItem('BOOKINGHISTORY', JSON.stringify(payload))
     }
 
-    console.log('chairBookings: ',)
     return (
         <div>
             <h2 className="mt-5 text-[15px] font-700">DANH SÁCH GHẾ</h2>
@@ -104,24 +104,20 @@ const Result = () => {
 
                     <tr>
                         <td>Tổng tiền thanh toán</td>
-
-                        <td></td>
+                        
+                        <td>
+                        {chairBookings.reduce((total, chair) => {
+                                return (total += chair.gia)
+                            }, 0)}
+                        </td>
                     </tr>
                 </tbody>
             </table>
-
+            
             <button
                 className="btn btn-success mt-3"
-                onClick={() => onPay(payload)}
-                //     dispatch(baiTapMovieBookingActions.setChairBookeds())
-                //     if (!accessToken) {
-                //         navigate(PATH.login)
-
-                //         return
-                //     }
-                //     navigate(PATH.booking)
-                // }}
-
+                onClick={() => onPay()}
+                disabled={chairBookings.length === 0}                 
             >
                 Thanh toán
             </button>

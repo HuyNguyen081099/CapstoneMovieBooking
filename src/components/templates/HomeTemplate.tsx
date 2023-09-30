@@ -78,7 +78,7 @@ export const HomeTemplate = () => {
                                         console.log('path', path)
                                     }}
                                 >Chi tiết</Button>
-                                <Button className='btn-booking'>Mua vé</Button>
+                                {/* <Button className='btn-booking'>Mua vé</Button> */}
                             </div>
                         </Card>
                     ))

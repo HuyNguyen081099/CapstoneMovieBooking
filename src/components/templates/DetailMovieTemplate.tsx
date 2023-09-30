@@ -66,6 +66,7 @@ export const DetailMovieTemplate = () => {
                                     Trailer
                                 </Button></a>
                                 <Button className="btn-booking"
+                                    onClick={() => navigate(`/calendar/${detailMovie.maPhim}`)}
                                 >
                                     Đặt vé
                                 </Button>

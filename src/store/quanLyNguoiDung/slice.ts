@@ -23,6 +23,7 @@ const quanLyNguoiDungSlice = createSlice({
             state.accessToken = undefined
             state.userLogin = undefined
             localStorage.removeItem('ACCESSTOKEN')
+            localStorage.removeItem('BOOKINGHISTORY')
         },
     }, // xử lý action đồng bộ
     extraReducers(builder) {

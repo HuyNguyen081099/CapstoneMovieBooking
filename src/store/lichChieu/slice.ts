@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { CumRap, LichChieuTheoPhim, ThongTinLichChieuHeThongRap, danhSachPhimChieu } from "types";
-import { getLichChieuListThunk } from ".";
+import { getLichChieuListThunk,  } from ".";
 
 type quanLyLichChieuInitialState = {
     ThongTinLichChieuHeThongRap?: ThongTinLichChieuHeThongRap<CumRap<danhSachPhimChieu<LichChieuTheoPhim[]>[]>[]>[]
@@ -20,4 +20,5 @@ const quanLyLichChieuSlice = createSlice({
         })
     }
 })
+
 export const { reducer: quanLyLichChieuReducer, actions: quanLyLichChieuActions} = quanLyLichChieuSlice

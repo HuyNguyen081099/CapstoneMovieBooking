@@ -5,4 +5,5 @@ export const PATH = {
     detail: '/detail/:movieid',
     booking: '/booking/:tenPhim/:tenRap/:ngayChieuGioChieu',
     theater: '/theater',
+    calendar: '/calendar/:maPhim'
 }

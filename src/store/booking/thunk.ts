@@ -7,7 +7,6 @@ export const bookingThunk = createAsyncThunk(
     'quanLyDatVe/booking',
     async (payload: bookingPayload<danhSachVe>, { rejectWithValue }) => {
         try {
-            debugger
             const data = await quanLyDatVeServices.book(payload)
             // console.log('data: ', data.data.content)
 
