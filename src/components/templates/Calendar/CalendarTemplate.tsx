@@ -16,7 +16,6 @@ export const CalendarTemplate = () => {
   const navigate = useNavigate()
   const heThongRapChieu = ThongTinLichChieuTheoPhim?.heThongRapChieu;
   useEffect(() => {
-    debugger
     dispatch(getLichChieuTheoPhimListThunk(params.maPhim))
     dispatch(getTheaterListThunk());
   }, [dispatch])
