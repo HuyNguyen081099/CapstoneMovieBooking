@@ -1,5 +1,5 @@
 import { useLocation, useNavigate, useSearchParams } from "react-router-dom"
-import qs from 'qs'
+import qs from 'qs' 
 export const useQueryParams = () => {
     const [searchParams, setsearchParams] = useSearchParams()
     const location = useLocation()

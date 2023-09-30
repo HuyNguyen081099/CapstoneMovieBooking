@@ -9,20 +9,20 @@ export const History = () => {
   }
   return (
     <>
-    {danhSachVe.map(a => (
-      <Card>
-        <div>ma ghe:  {a.maGhe}
+      {danhSachVe.map(a => (
+        <Card>
+          <div>Mã ghế:  {a.maGhe}
           </div>
-          <div> gia ve: {a.giaVe}
+          <div>Giá vé: {a.giaVe}
           </div>
-          <div> Ten Rap: {a.tenRap}
+          <div>Tên rạp: {a.tenRap}
           </div>
-          <div> ten phim : {a.tenPhim}
-        </div>
-        <div>Ngày đặt: {a.ngayDat}</div>
-      </Card>
-    ))}
+          <div>Tên phim: {a.tenPhim}
+          </div>
+          <div>Ngày đặt: {a.ngayDat}</div>
+        </Card>
+      ))}
     </>
-    
+
   )
 }
