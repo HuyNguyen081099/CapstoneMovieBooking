@@ -6,14 +6,14 @@ import { RootState, useAppDispatch } from "store"
 import { getMovieListThunk } from "store/quanLyPhim"
 
 export const DetailMovieTemplate = () => {
-    const params = useParams()
     const dispatch = useAppDispatch()
     const navigate = useNavigate()
-    const { movieList } = useSelector((state: RootState) => state.quanLyPhim)
-    const detailMovie = movieList.find(a => a.maPhim === params.movieid * 1)
     useEffect(() => {
         dispatch(getMovieListThunk())
     }, [dispatch])
+    const params = useParams()
+    const { movieList } = useSelector((state: RootState) => state.quanLyPhim)
+    const detailMovie = movieList?.find(a => a.maPhim === params.movieid * 1)
     return (
         <div className='bg-#170f23'>
             <div className="detailShow">

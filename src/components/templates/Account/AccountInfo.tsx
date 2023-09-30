@@ -15,12 +15,8 @@ export const AccountInfo = () => {
         mode: 'onChange',
         resolver: zodResolver(AccountSchema)
     })
-
     useEffect(() => {
-        reset({
-            ...user,
-            soDt: user?.soDT
-        })
+        reset({ ...user, soDt: user?.soDT })
     }, [user, reset])
     const setSubmit: SubmitHandler<AccountSchemaType> = async (values) => {
         console.log('values', values)
@@ -31,6 +27,7 @@ export const AccountInfo = () => {
             handleError(err, 'Cập nhật tài khoản thất bại')
         }
     }
+
     return (
         <form className='h-screen' onSubmit={handleSubmit(setSubmit)}>
             <p className="text-20 font-600">Thông tin tài khoản</p>

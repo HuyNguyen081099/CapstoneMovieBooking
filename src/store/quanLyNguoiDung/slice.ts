@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { UserByAccessToken, UserLogin } from 'types'
+import { UserByAccessToken, UserLogin, UserUpdate } from 'types'
 import { getUserByAccessTokenThunk, loginThunk } from '.'
 import { getAccessToken } from 'utils'
 
@@ -7,6 +7,7 @@ type QuanLyNguoiDungInitialState = {
     accessToken?: string
     userLogin?: UserLogin | UserByAccessToken
     isFetchingLogin?: boolean
+    infoUser?: UserUpdate
 }
 
 const initialState: QuanLyNguoiDungInitialState = {
@@ -47,6 +48,9 @@ const quanLyNguoiDungSlice = createSlice({
             .addCase(getUserByAccessTokenThunk.fulfilled, (state, { payload }) => {
                 state.userLogin = payload
             })
+            // .addCase(updateNguoiDungToken.fulfilled, (state, {payload})=>{
+            //     state.userLogin = payload
+            // })
     },
 })
 

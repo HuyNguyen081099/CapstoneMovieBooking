@@ -24,7 +24,6 @@ export const LoginTemplate = () => {
     const { isFetchingLogin } = useSelector((state: RootState) => state.quanLyNguoiDung)
 
     const onSubmit: SubmitHandler<LoginSchemaType> = (value) => {
-        console.log('value: ', value)
         dispatch(loginThunk(value))
             .unwrap()
             .then(() => {

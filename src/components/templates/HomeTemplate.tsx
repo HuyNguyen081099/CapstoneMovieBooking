@@ -8,16 +8,15 @@ import { PATH } from 'constant'
 import { useQueryParams } from 'hooks'
 export const HomeTemplate = () => {
     const dispatch = useAppDispatch()
+    useEffect(() => {
+        dispatch(getMovieListThunk())
+    }, [dispatch])
     const { movieList, isFetchingMovieList } = useSelector((state: RootState) => state.quanLyPhim)
     const navigate = useNavigate()
     const [inputValue, setInputValue] = useState('')
     const [queryParams, setQueryParams] = useQueryParams()
     console.log('queryParams', queryParams)
-    // const movieSearch = movieList.filter(a => a.tenPhim.toLowerCase().includes(queryParams?.name?.toLowerCase()))
-    // console.log('movieSearch', movieSearch)
-    useEffect(() => {
-        dispatch(getMovieListThunk())
-    }, [dispatch])
+    const movieSearch = movieList?.filter(a => a.tenPhim.toLowerCase().includes(queryParams?.name?.toLowerCase()))
     if (isFetchingMovieList) {
         return (
             <div className="grid grid-cols-4">
@@ -56,8 +55,8 @@ export const HomeTemplate = () => {
             </form>
             <div className="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-col-1">
                 {
-                    // (movieSearch?.length? movieSearch : movieList)?.map((movie) => (
-                    movieList?.map(movie => (
+                    (movieSearch?.length? movieSearch : movieList)?.map((movie) => (
+                    // movieList?.map(movie => (
                         <Card
                             key={movie.maPhim}
                             className="!mt-20"
