@@ -10,7 +10,6 @@ import { bookingThunk } from 'store/booking'
 // import { handleError } from 'utils'
 //  import { bookingPayload, danhSachVe } from '../../../types/QuanLyDatVe'
 import { AppDispatch } from '../../../store/index'
-import { handleError } from 'utils'
 import { toast } from 'react-toastify'
 
 const Result = () => {
@@ -122,6 +121,7 @@ const Result = () => {
                 //     }
                 //     navigate(PATH.booking)
                 // }}
+
             >
                 Thanh toán
             </button>

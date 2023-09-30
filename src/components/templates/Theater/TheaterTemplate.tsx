@@ -70,8 +70,7 @@ export const TheaterTemplate = () => {
                                     {
                                       c?.lstLichChieuTheoPhim?.map(d => (
                                         <p key={d.maLichChieu} className="text-lichchieu" onClick={() => {
-                                          console.log(c.maPhim)
-                                          console.log(c.tenPhim)
+
                                           if (!accessToken) {
                                             navigate(PATH.login)
                                             return
