@@ -1,6 +1,6 @@
 import { NavLink, useNavigate } from 'react-router-dom'
 import { styled } from 'styled-components'
-import { Avatar, Button, Input, Popover } from 'components'
+import { Avatar, Button, Popover } from 'components'
 import { PATH } from 'constant'
 import { useAuth } from 'hooks'
 import { useAppDispatch } from 'store'
@@ -13,7 +13,7 @@ export const Header = () => {
     const { accessToken, user } = useAuth()
     const dispatch = useAppDispatch()
     const [scroll, setSecroll] = useState<boolean>(false)
-
+    
     const handleScroll = () => {
         if (window.pageYOffset > 50) {
             setSecroll(true)
@@ -21,7 +21,7 @@ export const Header = () => {
         }
         setSecroll(false)
     }
-
+    
     useEffect(() => {
         window.addEventListener('scroll', handleScroll)
         return () => {
@@ -36,22 +36,19 @@ export const Header = () => {
             })}
         >
             <div className="header-content">
-                <h1 className="brand">
+                <h1 className="brand"
+                onClick={()=>{
+                    navigate('/')
+                }}>
                     <span className="text-[var(--primary-color)]">CYBER</span>MOVIE
                 </h1>
                 <div className="flex items-center gap-[60px]">
                     <nav>
                         <NavLink to={PATH.theater}>LỊCH CHIẾU</NavLink>
                         <NavLink to="/">PHIM</NavLink>
-                        <NavLink to={PATH.booking}>RẠP</NavLink>
+                        <NavLink to={PATH.theater}>RẠP</NavLink>
                         <NavLink to="">TIN TỨC</NavLink>
                     </nav>
-                    <div className="search">
-                        <Input placeholder="Tìm kiếm tên phim" />
-                        <Button>
-                            <i className="fa-solid fa-magnifying-glass"></i>
-                        </Button>
-                    </div>
                     <div>
                         {!accessToken && (
                             <p className="flex items-center font-600">
@@ -88,7 +85,7 @@ export const Header = () => {
                                             className="!h-[46px]"
                                             type="primary"
                                             onClick={() =>
-                                                dispatch(quanLyNguoiDungActions.logOut('abc'))
+                                                dispatch(quanLyNguoiDungActions.logOut())
                                             }
                                         >
                                             <i className="fa-solid fa-arrow-right-from-bracket text-16"></i>

@@ -8,8 +8,6 @@ import { useAuth } from "hooks"
 import { useNavigate } from "react-router-dom"
 import { PATH } from "constant"
 
-
-
 export const TheaterTemplate = () => {
   const { ThongTinLichChieuHeThongRap } = useSelector((state: RootState) => state.quanLyLichChieu)
   const { accessToken } = useAuth()
@@ -66,7 +64,7 @@ export const TheaterTemplate = () => {
                                     </div>
                                     <p className="text-[35px] font-700" >{c.tenPhim}</p>
                                   </div>
-                                  <div className="grid grid-cols-6 gap-[10px]">
+                                  <div className="grid grid-cols-5 gap-[10px]">
                                     {
                                       c?.lstLichChieuTheoPhim?.map(d => (
                                         <p key={d.maLichChieu} className="text-lichchieu" onClick={() => {
@@ -75,8 +73,10 @@ export const TheaterTemplate = () => {
                                             navigate(PATH.login)
                                             return
                                           }
+
                                           navigate(`/booking/${c.tenPhim}/${d.tenRap}/${d.ngayChieuGioChieu}`)
                                         }}>{d.ngayChieuGioChieu}   {d.giaVe}VNĐ</p>
+
                                       ))
                                     }
                                   </div>
@@ -98,3 +98,4 @@ export const TheaterTemplate = () => {
     </div>
   )
 }
+

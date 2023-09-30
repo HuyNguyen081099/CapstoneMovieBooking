@@ -1,4 +1,4 @@
-import { Tabs } from 'components'
+import { Password, Tabs } from 'components'
 import { AccountInfo } from './AccountInfo'
 
 export const AccountTemplate = () => {
@@ -11,6 +11,11 @@ export const AccountTemplate = () => {
                         key: 'accountInfo',
                         label: 'Thông tin tài khoản',
                         children: <AccountInfo />,
+                    },
+                    {
+                        key: 'doiMatKhau',
+                        label: 'Đổi mật khẩu',
+                        children: <Password />,
                     },
                     {
                         key: 'accountHistoryBooking',

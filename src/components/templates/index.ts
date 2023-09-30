@@ -1,6 +1,7 @@
 export * from './RegisterTemplate'
 export * from './LoginTemplate'
 export * from './HomeTemplate'
+export * from './DetailMovieTemplate'
 export * from './Account'
 export * from './booking'
 export * from './Theater'
