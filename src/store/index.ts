@@ -11,8 +11,10 @@ export const store = configureStore({
 // dispatch action khi client vào trang web
 store.dispatch(getUserByAccessTokenThunk())
 
-type AppDispatch = (typeof store)['dispatch']
+export type AppDispatch = (typeof store)['dispatch']
 
 export const useAppDispatch: () => AppDispatch = useDispatch
 
 export type RootState = ReturnType<(typeof store)['getState']>
+
+export default store

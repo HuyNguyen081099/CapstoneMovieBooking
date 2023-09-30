@@ -1,5 +1,6 @@
-
+import { booking} from 'types'
 import { createSlice } from '@reduxjs/toolkit'
+import { type } from 'os'
 
 const initialState = {
     chairBookings: [],
