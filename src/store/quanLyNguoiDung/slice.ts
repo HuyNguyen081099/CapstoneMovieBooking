@@ -1,5 +1,5 @@
-import { PayloadAction, createSlice } from '@reduxjs/toolkit'
-import { UserByAccessToken, UserLogin } from 'types'
+import { createSlice } from '@reduxjs/toolkit'
+import { UserByAccessToken, UserLogin, UserUpdate } from 'types'
 import { getUserByAccessTokenThunk, loginThunk } from '.'
 import { getAccessToken } from 'utils'
 
@@ -7,6 +7,7 @@ type QuanLyNguoiDungInitialState = {
     accessToken?: string
     userLogin?: UserLogin | UserByAccessToken
     isFetchingLogin?: boolean
+    infoUser?: UserUpdate
 }
 
 const initialState: QuanLyNguoiDungInitialState = {
@@ -18,11 +19,11 @@ const quanLyNguoiDungSlice = createSlice({
     name: 'quanLyNguoiDung',
     initialState,
     reducers: {
-        logOut: (state, { payload }: PayloadAction<string>) => {
-            console.log('action: ', payload)
+        logOut: (state) => {
             state.accessToken = undefined
             state.userLogin = undefined
             localStorage.removeItem('ACCESSTOKEN')
+            localStorage.removeItem('BOOKINGHISTORY')
         },
     }, // xử lý action đồng bộ
     extraReducers(builder) {
@@ -36,11 +37,10 @@ const quanLyNguoiDungSlice = createSlice({
                 state.isFetchingLogin = false
             })
             .addCase(loginThunk.fulfilled, (state, { payload }) => {
-                console.log('payload: ', payload)
                 // lưu accessToken xuống localstorage
                 localStorage.setItem('ACCESSTOKEN', payload.accessToken)
                 state.accessToken = payload.accessToken
-
+                
                 // set lại user
                 state.userLogin = payload
                 state.isFetchingLogin = false
@@ -49,6 +49,9 @@ const quanLyNguoiDungSlice = createSlice({
             .addCase(getUserByAccessTokenThunk.fulfilled, (state, { payload }) => {
                 state.userLogin = payload
             })
+            // .addCase(updateNguoiDungToken.fulfilled, (state, {payload})=>{
+            //     state.userLogin = payload
+            // })
     },
 })
 

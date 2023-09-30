@@ -24,7 +24,6 @@ export const LoginTemplate = () => {
     const { isFetchingLogin } = useSelector((state: RootState) => state.quanLyNguoiDung)
 
     const onSubmit: SubmitHandler<LoginSchemaType> = (value) => {
-        console.log('value: ', value)
         dispatch(loginThunk(value))
             .unwrap()
             .then(() => {
@@ -42,7 +41,7 @@ export const LoginTemplate = () => {
         <form onSubmit={handleSubmit(onSubmit)}>
             <h2 className="font-600 text-30 text-white">Đăng nhập</h2>
             <Input
-                className="mt-16"
+                className="mt-16  text-white"
                 label="Tài khoản"
                 placeholder="Tài khoản"
                 id="taiKhoan"
@@ -51,7 +50,7 @@ export const LoginTemplate = () => {
                 register={register}
             />
             <Input
-                className="mt-16"
+                className="mt-16  text-white"
                 label="Mật khẩu"
                 placeholder="Mật khẩu"
                 id="matKhau"

@@ -30,4 +30,3 @@
 15. sass
 
 16. react-toastify
-
