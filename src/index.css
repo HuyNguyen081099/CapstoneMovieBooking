@@ -19,10 +19,10 @@
         @apply bg-white border-b dark:bg-gray-800 dark:border-gray-700
     }
     .th-table{
-        @apply px-6 py-10 pr-7 font-medium text-gray-900 whitespace-nowrap dark:text-white
+        @apply px-6 py-4 pr-7 font-medium text-gray-900 whitespace-nowrap dark:text-white
     }
     .detailShow{
-       @apply grid p-20 items-center bg-white border border-gray-200 rounded-lg shadow lg:grid-cols-2 md:grid-cols-1 
+       @apply grid p-20 bg-white border border-gray-200 rounded-lg shadow lg:grid-cols-detailMovie md:grid-cols-1 
     }
     .back-list{
         @apply inline-flex cursor-pointer items-center mr-28 text-[18px] font-medium text-center text-black hover:underline focus:ring-4 focus:outline-none focus:ring-red-300

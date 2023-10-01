@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { UserByAccessToken, UserLogin, UserUpdate } from 'types'
-import { getUserByAccessTokenThunk, loginThunk } from '.'
+import { getUserByAccessTokenThunk, loginThunk, updateNguoiDungThunk } from '.'
 import { getAccessToken } from 'utils'
 
 type QuanLyNguoiDungInitialState = {
@@ -40,7 +40,7 @@ const quanLyNguoiDungSlice = createSlice({
                 // lưu accessToken xuống localstorage
                 localStorage.setItem('ACCESSTOKEN', payload.accessToken)
                 state.accessToken = payload.accessToken
-                
+
                 // set lại user
                 state.userLogin = payload
                 state.isFetchingLogin = false
@@ -49,11 +49,11 @@ const quanLyNguoiDungSlice = createSlice({
             .addCase(getUserByAccessTokenThunk.fulfilled, (state, { payload }) => {
                 state.userLogin = payload
             })
-            // .addCase(updateNguoiDungToken.fulfilled, (state, {payload})=>{
-            //     state.userLogin = payload
+            // .addCase(updateNguoiDungThunk.fulfilled, (state, { payload }) => {
+            //     console.log('payload', payload)
+            //     state.infoUser = payload
             // })
     },
 })
 
-export const { actions: quanLyNguoiDungActions, reducer: quanLyNguoiDungReducer } =
-    quanLyNguoiDungSlice
+export const { actions: quanLyNguoiDungActions, reducer: quanLyNguoiDungReducer } = quanLyNguoiDungSlice

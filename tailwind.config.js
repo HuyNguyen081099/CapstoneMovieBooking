@@ -40,6 +40,9 @@ export default {
               10: '10px',
               16: '16px',
           },
+          gridTemplateColumns: {
+            'detailMovie': '400px auto',
+          },
       },
   },
   plugins: [],

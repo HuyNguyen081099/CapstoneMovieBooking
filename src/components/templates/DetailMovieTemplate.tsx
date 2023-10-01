@@ -7,10 +7,10 @@ import { getMovieListThunk } from "store/quanLyPhim"
 
 export const DetailMovieTemplate = () => {
     const dispatch = useAppDispatch()
-    const navigate = useNavigate()
     useEffect(() => {
         dispatch(getMovieListThunk())
     }, [dispatch])
+    const navigate = useNavigate()
     const params = useParams()
     const { movieList } = useSelector((state: RootState) => state.quanLyPhim)
     const detailMovie = movieList?.find(a => a.maPhim === params.movieid * 1)
@@ -29,7 +29,7 @@ export const DetailMovieTemplate = () => {
                                     <th scope="row" className="th-table">
                                         Tên phim
                                     </th>
-                                    <td className="px-6 py-4">
+                                    <td className="px-6 py-3">
                                         {detailMovie.tenPhim}
                                     </td>
                                 </tr>
@@ -37,7 +37,7 @@ export const DetailMovieTemplate = () => {
                                     <th scope="row" className="th-table">
                                         Ngày khởi chiếu
                                     </th>
-                                    <td className="px-6 py-4">
+                                    <td className="px-6 py-3">
                                         {detailMovie.ngayKhoiChieu}
                                     </td>
                                 </tr>
@@ -45,7 +45,7 @@ export const DetailMovieTemplate = () => {
                                     <th scope="row" className="th-table">
                                         Mô tả
                                     </th>
-                                    <td className="px-6 py-4">
+                                    <td className="px-6 py-3">
                                         {detailMovie.moTa}
                                     </td>
                                 </tr>
@@ -53,7 +53,7 @@ export const DetailMovieTemplate = () => {
                                     <th scope="row" className="th-table">
                                         Đánh giá
                                     </th>
-                                    <td className="px-6 py-4">
+                                    <td className="px-6 py-3">
                                         {detailMovie.danhGia}/10
                                     </td>
                                 </tr>
