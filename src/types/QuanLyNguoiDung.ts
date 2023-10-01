@@ -21,5 +21,5 @@ export type UserUpdate = {
     matKhau: string
     soDt: string
     maNhom: string
-    maLoaiNguoiDung: string
+    maLoaiNguoiDung: 'KhachHang' | 'QuanTri'
 }

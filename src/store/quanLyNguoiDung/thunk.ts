@@ -39,7 +39,7 @@ export const getUserByAccessTokenThunk = createAsyncThunk(
         }
     }
 )
-export const updateNguoiDungToken = createAsyncThunk(
+export const updateNguoiDungThunk = createAsyncThunk(
     'quanLyNguoiDung/updateNguoiDungToken',
     async (payload: UserUpdate, { rejectWithValue }) => {
         try {

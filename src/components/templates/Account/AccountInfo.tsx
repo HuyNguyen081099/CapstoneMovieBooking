@@ -5,13 +5,13 @@ import { useAuth } from 'hooks'
 import { useEffect } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { AccountSchema, AccountSchemaType } from 'schema/AccountSchema'
+import { toast } from 'react-toastify'
 import { quanLyNguoiDungServices } from 'services'
-import { useAppDispatch } from 'store'
-import { updateNguoiDungThunk} from 'store/quanLyNguoiDung'
+import { handleError } from 'utils'
 
 export const AccountInfo = () => {
     const { user } = useAuth()
-    const dispatch = useAppDispatch()
+    console.log('user', user)
     const { handleSubmit, reset, register, formState: { errors } } = useForm<AccountSchemaType>({
         mode: 'onChange',
         resolver: zodResolver(AccountSchema)
@@ -19,17 +19,14 @@ export const AccountInfo = () => {
     useEffect(() => {
         reset({ ...user, soDt: user?.soDT })
     }, [user, reset])
-    const setSubmit: SubmitHandler<AccountSchemaType> = (values) => {
+    const setSubmit: SubmitHandler<AccountSchemaType> = async (values) => {
         console.log('values', values)
-        // dispatch(updateNguoiDungThunk(values)).unwrap().then(() => {
-            
-        // })
-        // try {
-        //     await quanLyNguoiDungServices.updateUser(values)
-        //     toast.success('Cập nhật tài khoản thành công')
-        // } catch (err) {
-        //     handleError(err, 'Cập nhật tài khoản thất bại')
-        // }
+        try {
+            await quanLyNguoiDungServices.updateUser(values)
+            toast.success('Cập nhật tài khoản thành công')
+        } catch (err) {
+            handleError(err, 'Cập nhật tài khoản thất bại')
+        }
     }
 
     return (

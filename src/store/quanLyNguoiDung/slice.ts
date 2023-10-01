@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { UserByAccessToken, UserLogin, UserUpdate } from 'types'
-import { getUserByAccessTokenThunk, loginThunk } from '.'
+import { getUserByAccessTokenThunk, loginThunk, updateNguoiDungThunk } from '.'
 import { getAccessToken } from 'utils'
 
 type QuanLyNguoiDungInitialState = {
@@ -23,6 +23,7 @@ const quanLyNguoiDungSlice = createSlice({
             state.accessToken = undefined
             state.userLogin = undefined
             localStorage.removeItem('ACCESSTOKEN')
+            localStorage.removeItem('BOOKINGHISTORY')
         },
     }, // xử lý action đồng bộ
     extraReducers(builder) {
@@ -48,9 +49,10 @@ const quanLyNguoiDungSlice = createSlice({
             .addCase(getUserByAccessTokenThunk.fulfilled, (state, { payload }) => {
                 state.userLogin = payload
             })
-            // .addCase(updateNguoiDungToken.fulfilled, (state, {payload})=>{
-            //     state.userLogin = payload
-            // })
+            .addCase(updateNguoiDungThunk.fulfilled, (state, {payload})=>{
+                console.log('payload', payload)
+                
+            })
     },
 })
 
