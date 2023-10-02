@@ -86,6 +86,7 @@ export const Header = () => {
                                             type="primary"
                                             onClick={() =>
                                                 dispatch(quanLyNguoiDungActions.logOut())
+                                                
                                             }
                                         >
                                             <i className="fa-solid fa-arrow-right-from-bracket text-16"></i>

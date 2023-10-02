@@ -39,8 +39,8 @@ export const getUserByAccessTokenThunk = createAsyncThunk(
         }
     }
 )
-export const updateNguoiDungToken = createAsyncThunk(
-    'quanLyNguoiDung/updateNguoiDungToken',
+export const updateNguoiDungThunk = createAsyncThunk(
+    'quanLyNguoiDung/updateNguoiDungThunk',
     async (payload: UserUpdate, { rejectWithValue }) => {
         try {
             const data = await quanLyNguoiDungServices.updateUser(payload)

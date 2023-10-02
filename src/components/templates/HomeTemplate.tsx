@@ -16,7 +16,6 @@ export const HomeTemplate = () => {
     const navigate = useNavigate()
     const [inputValue, setInputValue] = useState('')
     const [queryParams, setQueryParams] = useQueryParams()
-    console.log('queryParams', queryParams)
     const movieSearch = movieList?.filter(a => a.tenPhim.toLowerCase().includes(queryParams?.name?.toLowerCase()))
     if (isFetchingMovieList) {
         return (

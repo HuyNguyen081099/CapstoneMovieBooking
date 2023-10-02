@@ -9,7 +9,8 @@ export type UserLogin = {
 }
 
 export type UserByAccessToken = Omit<UserLogin, 'accessToken'> & {
-    thongTinDatVe?: []
+    thongTinDatVe: []
+    matKhau:string
     loaiNguoiDung: {
         maLoaiNguoiDung: 'KhachHang' | 'QuanTri'
     }
