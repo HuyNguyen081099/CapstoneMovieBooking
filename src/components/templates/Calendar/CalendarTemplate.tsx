@@ -50,19 +50,19 @@ export const CalendarTemplate = () => {
                         </div>,
                       key: `${b.maCumRap}`,
                       children: <div key={b.maCumRap}>
-                            <div key={b.maPhim} className="mb-24">
+                            <div key={ThongTinLichChieuTheoPhim.maPhim} className="mb-24">
                               <div className="flex">
                                 <div className="h-[300px]">
-                                  <img style={{ width: 200, paddingRight: 10}} src={b?.hinhAnh} alt="" />
+                                  <img style={{ width: 200, paddingRight: 10}} src={ThongTinLichChieuTheoPhim?.hinhAnh} alt="" />
                                 </div>
                                 <div className="flex flex-col items-start">
                                   <div className="flex mb-10 items-start">
                                     <div className="mr-10">
-                                      {b.dangChieu ? <p className="text-comment bg-red-500 mb-6">Đang Chiếu</p> : <p className="text-comment bg-green-500 mb-6">Sắp Chiếu</p>}
-                                      {b.hot && <p className="text-comment bg-red-600 text-yellow-300 mb-6"><i className="fa-solid fa-fire mr-10"></i>HOT</p>}
+                                      {ThongTinLichChieuTheoPhim.dangChieu ? <p className="text-comment bg-red-500 mb-6">Đang Chiếu</p> : <p className="text-comment bg-green-500 mb-6">Sắp Chiếu</p>}
+                                      {ThongTinLichChieuTheoPhim.hot && <p className="text-comment bg-red-600 text-yellow-300 mb-6"><i className="fa-solid fa-fire mr-10"></i>HOT</p>}
                                       <p className="text-comment bg-gray-400"><i className="fa-regular fa-hourglass-half mr-10"></i>120 phút</p>
                                     </div>
-                                    <p className="text-[35px] font-700" >{b.tenPhim}</p>
+                                    <p className="text-[35px] font-700" >{ThongTinLichChieuTheoPhim.tenPhim}</p>
                                   </div>
                                   <div className="grid grid-cols-5 gap-[10px]">
                                     {
@@ -74,7 +74,7 @@ export const CalendarTemplate = () => {
                                             return
                                           }
 
-                                          navigate(`/booking/${c.tenPhim}/${c.tenRap}/${c.ngayChieuGioChieu}`)
+                                          navigate(`/booking/${ThongTinLichChieuTheoPhim.tenPhim}/${c.tenRap}/${c.ngayChieuGioChieu}`)
                                         }}>{new Date(c.ngayChieuGioChieu).getHours()} : {new Date(c.ngayChieuGioChieu).getMinutes()}</p>
                                   ))}
                                   </div>
@@ -94,4 +94,3 @@ export const CalendarTemplate = () => {
     </div>
   )
 }
-

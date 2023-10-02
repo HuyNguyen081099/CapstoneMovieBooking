@@ -13,21 +13,18 @@ const Result = () => {
     const navigate = useNavigate()
     const { accessToken } = useAuth()
     const { chairBookings } = useSelector((state: RootState) => state.baiTapMovieBooking)
-    // const { ThongTinLichChieuHeThongRap } = useSelector((state: RootState) => state.quanLyLichChieu)
     let payload = {
         "danhSachVe": []
-      };
+    };
+    const history = localStorage.getItem('BOOKINGHISTORY');
 
-    let history = localStorage.getItem('BOOKINGHISTORY');
-
-    if (chairBookings.length >0) {
-        debugger
+    if (chairBookings.length > 0) {
         if (history) {
             payload = JSON.parse(history)
         }
         const ngayDat = new Date();
         chairBookings.forEach(c => payload.danhSachVe.push({ tenPhim: params.tenPhim, tenRap: params.tenRap, maGhe: c.soGhe, giaVe: c.gia, ngayDat: ngayDat }))
-    }  
+    }
 
     const onPay = () => {
         dispatch(baiTapMovieBookingActions.setChairBookeds())
@@ -104,20 +101,20 @@ const Result = () => {
 
                     <tr>
                         <td>Tổng tiền thanh toán</td>
-                        
+
                         <td>
-                        {chairBookings.reduce((total, chair) => {
+                            {chairBookings.reduce((total, chair) => {
                                 return (total += chair.gia)
                             }, 0)}
                         </td>
                     </tr>
                 </tbody>
             </table>
-            
+
             <button
                 className="btn btn-success mt-3"
                 onClick={() => onPay()}
-                disabled={chairBookings.length === 0}                 
+                disabled={chairBookings.length === 0}
             >
                 Thanh toán
             </button>

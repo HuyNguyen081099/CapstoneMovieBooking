@@ -13,9 +13,9 @@ export const History = () => {
         <Card>
           <div>Mã ghế:  {a.maGhe}
           </div>
-          <div>Giá vé: {a.giaVe}
+          <div>Giá vé: {a.giaVe} VNĐ
           </div>
-          <div>Tên rạp: {a.tenRap}
+          <div>Tên rạp: {a.tenRap} 
           </div>
           <div>Tên phim: {a.tenPhim}
           </div>

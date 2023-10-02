@@ -56,14 +56,18 @@ export const HomeTemplate = () => {
             </form>
             <div className="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-col-1">
                 {
-                    (movieSearch?.length? movieSearch : movieList)?.map((movie) => (
-                    // movieList?.map(movie => (
+                    (movieSearch?.length ? movieSearch : movieList)?.map((movie) => (
+                        // movieList?.map(movie => (
                         <Card
                             key={movie.maPhim}
                             className="!mt-20"
                             hoverable
                             style={{ width: 240 }}
                             cover={<img alt="example" src={movie.hinhAnh} />}
+                            onClick={() => {
+                                const path = generatePath(PATH.detail, { movieid: movie.maPhim })
+                                navigate(path)
+                            }}
                         >
                             <Card.Meta className='!mb-10'
                                 title={movie.tenPhim}
@@ -74,7 +78,6 @@ export const HomeTemplate = () => {
                                     onClick={() => {
                                         const path = generatePath(PATH.detail, { movieid: movie.maPhim })
                                         navigate(path)
-                                        console.log('path', path)
                                     }}
                                 >Chi tiết</Button>
                                 {/* <Button className='btn-booking'>Mua vé</Button> */}

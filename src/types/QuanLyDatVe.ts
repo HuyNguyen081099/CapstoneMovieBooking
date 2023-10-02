@@ -6,5 +6,6 @@ export type bookingPayload<A> = {
 export type danhSachVe = {
     maGhe: number
     giaVe: number
+    
 }
 
