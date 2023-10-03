@@ -13,12 +13,12 @@ export const DetailMovieTemplate = () => {
     const navigate = useNavigate()
     const params = useParams()
     const { movieList } = useSelector((state: RootState) => state.quanLyPhim)
-    const detailMovie = movieList?.find(a => a.maPhim === params.movieid * 1)
+    const detailMovie = movieList?.find(a => a.maPhim === Number(params.movieid))
     return (
         <div className='bg-#170f23'>
             <div className="detailShow">
-                <img className="object-cover ml-24 mr-24 rounded-lg h-[500px]" src={detailMovie.hinhAnh} alt='' />
-                <div className="p-4 leading-normal h-[500px]">
+                <img className="object-cover ml-24 mr-24 rounded-lg h-[500px]" src={detailMovie?.hinhAnh} alt='' />
+                <div className="p-4 leading-normal">
                     <h5 className="text-36 font-bold text-gray-900 dark:text-white">{detailMovie.tenPhim}</h5>
                     <div className="relative overflow-x-auto ">
                         <table className="text-16 w-800 text-left text-gray-500 mb-24">
@@ -70,14 +70,14 @@ export const DetailMovieTemplate = () => {
                                 >
                                     Đặt vé
                                 </Button>
+                                <Button className="btn-back ml-[10px]"
+                                    onClick={() => {
+                                        navigate('/')
+                                    }}
+                                >
+                                    <i className="fa-solid fa-arrow-left pr-6"></i>Quay lại
+                                </Button>
                             </div>
-                            <p className="back-list"
-                                onClick={() => {
-                                    navigate('/')
-                                }}
-                            >
-                                <i className="fa-solid fa-arrow-left pr-6"></i>Quay lại
-                            </p>
                         </div>
                     </div>
                 </div>

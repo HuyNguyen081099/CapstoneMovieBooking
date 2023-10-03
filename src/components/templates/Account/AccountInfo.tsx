@@ -6,7 +6,6 @@ import { useEffect } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { AccountSchema, AccountSchemaType } from 'schema/AccountSchema'
 import { toast } from 'react-toastify'
-import { handleError } from 'utils'
 import { useAppDispatch } from 'store'
 import { updateNguoiDungThunk } from 'store/quanLyNguoiDung'
 import { UserUpdate } from 'types'
@@ -22,13 +21,14 @@ export const AccountInfo = () => {
         reset(infoUser)
     }, [reset, infoUser])
     const setSubmit: SubmitHandler<AccountSchemaType> = (values) => {
+        console.log('values', values)
         const { email, hoTen, maLoaiNguoiDung, maNhom, matKhau, soDt, taiKhoan } = values
         const UserUpdate: UserUpdate = { email, hoTen, maLoaiNguoiDung, maNhom, matKhau, soDt, taiKhoan }
         dispatch(updateNguoiDungThunk(UserUpdate)).unwrap().then(() => {
             toast.success('Cập nhật tài khoản thành công')
         })
-            .catch((err) => {
-                handleError(err, 'Cập nhật tài khoản thất bại')
+            .catch(() => {
+                toast.error('Vui lòng F5 để load lại trang web')
             })
     }
 

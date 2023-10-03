@@ -5,7 +5,7 @@ import { Tabs } from 'components'
 import { getLichChieuListThunk } from "store/lichChieu"
 import { getTheaterListThunk } from "store/Theater"
 import { useAuth } from "hooks"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, generatePath } from "react-router-dom"
 import { PATH } from "constant"
 
 export const TheaterTemplate = () => {
@@ -18,6 +18,7 @@ export const TheaterTemplate = () => {
     dispatch(getLichChieuListThunk())
     dispatch(getTheaterListThunk())
   }, [dispatch])
+  const position = 'left'
   return (
     <div>
       <Tabs
@@ -35,7 +36,7 @@ export const TheaterTemplate = () => {
               key: `${a.maHeThongRap}`,
               children: <Tabs
                 className="overflow-y-auto h-[600px]"
-                tabPosition="left"
+                tabPosition={position}
                 items={
                   a?.lstCumRap?.map(b => {
                     return {
@@ -54,7 +55,7 @@ export const TheaterTemplate = () => {
                             <div key={c.maPhim} className="mb-24">
                               <div className="flex">
                                 <div className="h-[300px]">
-                                  <img style={{ width: 200, paddingRight: 10}} src={c.hinhAnh} alt="" />
+                                  <img style={{ width: 200, paddingRight: 10 }} src={c.hinhAnh} alt="" />
                                 </div>
                                 <div className="flex flex-col items-start">
                                   <div className="flex mb-10 items-start">
@@ -74,10 +75,12 @@ export const TheaterTemplate = () => {
                                             navigate(PATH.login)
                                             return
                                           }
-
-                                          navigate(`/booking/${c.tenPhim}/${d.tenRap}/${d.ngayChieuGioChieu}`)
-                                        }}>{new Date(d.ngayChieuGioChieu).getHours()} : {new Date(d.ngayChieuGioChieu).getMinutes()}</p>
-
+                                          const path = generatePath(PATH.booking, { bookingid: d.maLichChieu, movieid: c.maPhim, macumrap: b.maCumRap, mahethongrap: a.maHeThongRap})
+                                          navigate(path)
+                                        }}>
+                                        {new Date(d.ngayChieuGioChieu).getHours()} : {new Date(d.ngayChieuGioChieu).getMinutes()}
+                                        </p>
+                                        
                                       ))
                                     }
                                   </div>

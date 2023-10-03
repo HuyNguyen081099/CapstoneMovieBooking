@@ -4,7 +4,7 @@ import { quanLyPhimReducer } from './quanLyPhim'
 import { quanLyRapReducer } from './Theater'
 import { quanLyLichChieuReducer } from './lichChieu'
 import { quanLyLichChieuTheoPhimReducer } from './lichChieuTheoPhim'
-import { baiTapMovieBookingReducer } from './booking'
+import { MovieBookingReducer } from './booking'
 
 export const rootReducer = combineReducers({
     quanLyNguoiDung: quanLyNguoiDungReducer,
@@ -12,5 +12,5 @@ export const rootReducer = combineReducers({
     quanLyRap: quanLyRapReducer,
     quanLyLichChieu: quanLyLichChieuReducer,
     quanLyLichChieuTheoPhim: quanLyLichChieuTheoPhimReducer,
-    baiTapMovieBooking: baiTapMovieBookingReducer,
+    MovieBooking: MovieBookingReducer,
 })

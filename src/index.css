@@ -15,6 +15,9 @@
     .btn-booking{
         @apply !text-white !font-500 !bg-red-600 hover:!bg-red-700 hover:!border-red-700
     }
+    .btn-back{
+        @apply !text-white !font-500 !bg-blue-300 hover:!bg-blue-400 hover:!border-blue-400
+    }
     .tr-table{
         @apply bg-white border-b dark:bg-gray-800 dark:border-gray-700
     }
@@ -32,5 +35,14 @@
     }
     .btn-search{
         @apply text-white text-20 p-6 px-14 rounded-r-lg bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-600 focus:ring-opacity-50
+    }
+    .ghe{
+        @apply border md:h-[40px] md:w-[40px] md:text-[15px] md:rounded-lg flex justify-center items-center text-center rounded-md sm:h-[30px] sm:w-[30px] sm:text-[13px] sm:rounded-[4px] phone:text-[9px] phone:h-[20px] phone:w-[20px] phone:rounded-[3px]
+    }
+    .detailAtBooking{
+        @apply text-gray-500 border-b
+    }
+    .th-atBooking {
+        @apply px-6 pr-6 font-medium text-gray-900 whitespace-nowrap dark:text-white
     }
 }

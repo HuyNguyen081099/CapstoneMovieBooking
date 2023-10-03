@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 export const Footer = () => {
     return (
-        <Container className="mt-[100px] flex flex-col">
+        <Container className="mt-[100px] flex flex-col items-start">
             <img
                 className="w-full"
                 src="https://cinestar.com.vn/catalog/view/theme/default/images/line-bg.png"
@@ -24,7 +24,7 @@ export const Footer = () => {
                         <i className="fa-brands fa-youtube"></i>
                     </NavLink>
                 </div>
-                <div className="mt-[40px] flex gap-[100px] info">
+                <div className="mt-[40px] gap-[100px] info grid lg:grid-cols-4 md:grid-cols-2 phone:grid-cols-1">
                     <div>
                         <p className="font-700 text-20">
                             <span className="text-[var(--primary-color)]">CYBER</span>

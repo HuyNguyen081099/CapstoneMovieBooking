@@ -1,22 +1,40 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { quanLyDatVeServices } from 'services'
-import { sleep } from 'utils'
-import { bookingPayload, danhSachVe } from '../../types/QuanLyDatVe'
+import { bookedTicket, bookedTicketList } from 'types'
 
 export const bookingThunk = createAsyncThunk(
     'quanLyDatVe/booking',
-    async (payload: bookingPayload<danhSachVe>, { rejectWithValue }) => {
+    async (payload: bookedTicketList<bookedTicket[]>, { rejectWithValue }) => {
         try {
-            const data = await quanLyDatVeServices.book(payload)
-            // console.log('data: ', data.data.content)
-
-            // sleep 3s
-            // await new Promise(resolve => setTimeout(resolve, 3000))
-            await sleep(2000)
-
+            const data = await quanLyDatVeServices.datVe(payload)
+            console.log('data', data)
             return data.data.content;
         } catch (err) {
             return rejectWithValue(err);
+        }
+    }
+)
+export const danhSachPhongVeThunk  = createAsyncThunk(
+    'quanLyDatVe/laydanhsachphongve',
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    async ({bookingid}: any, {rejectWithValue}) => {
+        try{
+            const data = await quanLyDatVeServices.danhsachphongve(bookingid)
+            return data.data.content
+        } catch (err) {
+            return rejectWithValue(err)
+        }
+    }
+)
+export const capNhatTinhTrangGheThunk  = createAsyncThunk(
+    'quanLyDatVe/laydanhsachphongve',
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    async ({bookingid}: any, {rejectWithValue}) => {
+        try{
+            const data = await quanLyDatVeServices.danhsachphongve(bookingid)
+            return data.data.content
+        } catch (err) {
+            return rejectWithValue(err)
         }
     }
 )

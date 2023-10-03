@@ -18,4 +18,4 @@ export const quanLyNguoiDungServices = {
 // login : (data: LoginSchemaType) => api.post<ApiResponse<UserLogin>>('/DangNhap', data)
 // LoginSchemaType: là kiểu dữ liệu cho data truyền vào actionThunk
 // <ApiResponce<UserLogin>> :  là kiểu dữ liệu mà response từ backend trả về 
-// !!! callAPI thành công xong backend sẽ trả về response 200 thì <abc> được tạo ở file type phải khai báo y chang response đó
+// !!! callAPI thành công xong backend sẽ trả về response 200 thì <abc<def>> được tạo ở file type phải khai báo y chang response đó

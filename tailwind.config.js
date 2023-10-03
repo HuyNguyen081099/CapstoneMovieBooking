@@ -42,7 +42,12 @@ export default {
           },
           gridTemplateColumns: {
             'detailMovie': '400px auto',
+            '16': 'repeat(16, minmax(0, 1fr))',
+            'booking': 'auto 500px'
           },
+          screens:{
+            'phone': '483px'
+          }
       },
   },
   plugins: [],
