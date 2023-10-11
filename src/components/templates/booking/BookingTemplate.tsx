@@ -10,8 +10,30 @@ import { SubmitHandler } from 'react-hook-form'
 import { toast } from "react-toastify"
 import { getLichChieuTheoPhimListThunk } from "store/lichChieuTheoPhim"
 import { Button, Skeleton } from "components"
+import { PATH } from 'constant'
+import { useAuth } from "hooks"
 
 export const BookingTemplate = () => {
+  const { accessToken } = useAuth()
+  const initialState = {
+    thongTinPhim: {
+      tenCumRap: '',
+      tenRap: '',
+      diaChi: '',
+      tenPhim: '',
+      hinhAnh: '',
+      ngayChieu: '',
+      gioChieu: '',
+    }
+  }
+  const onPay = () => {
+    dispatch(MovieBookingActions.ChairBooking)
+    if (!accessToken) {
+      navigate(PATH.login)
+      return
+    }
+    localStorage.setItem('BOOKINGHISTORY', JSON.stringify(initialState))
+  }
   const navigate = useNavigate()
   const params = useParams()
   const dispatch = useAppDispatch()
@@ -193,6 +215,7 @@ export const BookingTemplate = () => {
                           })
                         })
                       }
+                      onPay()
                       GheDaDat(values)
                     }}
                   >Thanh toán</span>
